@@ -1,4 +1,6 @@
-INSERT INTO department (id)
+USE employee_db
+
+INSERT INTO department(name)
 VALUES ("Management"), 
        ("File office"), 
        ("HR"), 
@@ -12,7 +14,7 @@ VALUES ("Store manager", 100000, 1),
        ("Meat clerk", 30000, 4);
 
 INSERT INTO employee 
-(first_name, last_name, role_id, manager_id)
+(first_name, last_name, , department_id, role_id, manager_id)
 VALUES("Josh", "Richardson", "Store manager", null),
  ("Suddash","Singh","Assistant Manager",1), 
  ("Bashi","Basra","Lead",2), 
