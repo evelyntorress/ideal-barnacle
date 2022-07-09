@@ -1,4 +1,4 @@
-INSERT INTO department (dep_name)
+INSERT INTO department (id)
 VALUES ("Management"), 
        ("File office"), 
        ("HR"), 
@@ -16,4 +16,4 @@ INSERT INTO employee
 VALUES("Josh", "Richardson", "Store manager", null),
  ("Suddash","Singh","Assistant Manager",1), 
  ("Bashi","Basra","Lead",2), 
- ("Abdalla","Jama","Accountant",3),
+ ("Abdalla","Jama","Accountant",3);
