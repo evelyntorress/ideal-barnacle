@@ -82,8 +82,8 @@ function start() {
 
 // function to view all departments
 
-const viewDepts = () => {
-  db.query("SELECT * FROM department", (err, res) => {
+function viewDepts() {
+  connection.query("SELECT * FROM department", (err, res) => {
     if (err)
     throw err;
     console.table(res)
@@ -120,7 +120,7 @@ function viewRole() {
 // function to view all employees
 
 const viewAllEmployees = () => {
-  db.query("SELECT first_name, last_name FROM employee", (err, res) => {
+  connection.query("SELECT first_name, last_name FROM employee", (err, res) => {
     if (err)
     throw err;
     console.table(res)
