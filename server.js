@@ -67,29 +67,29 @@ function start() {
 }
 
 // View departments
-function viewDepts() {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "viewDepts",
-        message: "Select one to view:",
-        choices: ["Management", "File office", "HR", "Sales"],
-      },
-    ])
-  }
+// function viewDepts() {
+//   inquirer
+//     .prompt([
+//       {
+//         type: "list",
+//         name: "viewDepts",
+//         message: "Select one to view:",
+//         choices: ["Management", "File office", "HR", "Sales"],
+//       },
+//     ])
+//   }
 // 
 
-// // function to view all departments
+// function to view all departments
 
-// const viewDepts = () => {
-//   db.query("SELECT * FROM department", (err, res) => {
-//     if (err)
-//     throw err;
-//     console.table(res)
-//     start();
-//   })
-// }
+const viewDepts = () => {
+  db.query("SELECT * FROM department", (err, res) => {
+    if (err)
+    throw err;
+    console.table(res)
+    start();
+  })
+}
 
 
 
