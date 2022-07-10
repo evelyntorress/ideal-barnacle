@@ -1,5 +1,4 @@
 // Dependencies
-const express = require('express');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
@@ -7,10 +6,6 @@ const inquirer = require('inquirer');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const cTable = require('console.table');
-
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 // Connection to MySQL
 const connection = mysql.createConnection({
@@ -27,8 +22,6 @@ connection.connect((err) => {
 // add start function here
   start();
 });
-
-
 
 function start() {
    inquirer
@@ -82,17 +75,16 @@ function start() {
       });
     }
 
-    // View departments
-
- // VIEW FUNCTION SET
-function view(){
+// View departments
+function viewDepts(){
   inquirer
     .prompt([
           {
             type:"list",
-            name:"view",
+            name:"viewDepts",
             message:"Select one to view:",
-            choices: ["All employess", "By department", "By role"]
+            choices: ["Management", "File office", "HR", "Sales"]
+        
           }
          ])
          .then(function(res){
@@ -110,26 +102,3 @@ function view(){
              }
             });
           }
-                 
-        
-
-          
-
-
-            // console.table([
-//   {
-//     name: 'foo',
-//     age: 10
-//   }, {
-//     name: 'bar',
-//     age: 20
-//   }
-// ]);
-
-// // prints
-// name  age
-// ----  ---
-// foo   10
-// bar   20
-
-// code
