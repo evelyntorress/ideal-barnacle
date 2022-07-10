@@ -18,13 +18,13 @@ VALUES ("Store manager", 100000, 1),
 
 INSERT INTO employee 
 (first_name, last_name, role_id, manager_id)
-VALUES ("Josh", "Richardson", 1, NULL),
- ("Suddash","Singh", 2, 1), 
- ("Bashi", "Basra", 3, 1), 
- ("Abdalla","Jama",5, 1),
- ("Mannahz","Monfared",3, 1),
- ("Devang","Khanpara",6, 1),
- ("Colette","Petrovic",6, 4),
- ("Vat","Babic",6, 1),
- ("Steve","Rowden",4, 1),
- ("Michael", "Wong", 6, 4);
+VALUES ("Josh", "Richardson", "Store manager", NULL),
+ ("Suddash","Singh", "Assistant manager", 1), 
+ ("Bashi", "Basra", "Lead", 1), 
+ ("Abdalla","Jama","Accountant", 1),
+ ("Mannahz","Monfared","Lead", 1),
+ ("Devang","Khanpara","Grocery clerk", 1),
+ ("Colette","Petrovic","Meat clerk", 4),
+ ("Vat","Babic","Grocery clerk", 1),
+ ("Steve","Rowden", "Meat manager", 1),
+ ("Michael", "Wong", "Meat clerk", 4);

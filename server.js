@@ -1,5 +1,5 @@
 // Dependencies
-const express = require('express');
+const express = require("express");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 
@@ -72,115 +72,138 @@ function start() {
 
 function viewDepts() {
   connection.query("SELECT * FROM department", (err, res) => {
-    if (err)
-    throw err;
-    console.table(res)
+    if (err) throw err;
+    console.table(res);
     start();
-  })
+  });
 }
 // View roles
 
-function viewRole () {
+function viewRole() {
   connection.query("SELECT * FROM role", (err, res) => {
-    if (err)
-    throw err;
-    console.table(res)
+    if (err) throw err;
+    console.table(res);
     start();
-  })
+  });
 }
 
 // View all employees
 
-function viewAllEmployees () {
-  connection.query("SELECT first_name, last_name FROM employee LEFT JOIN department_name FROM department", (err, res) => {
-    if (err)
-    throw err;
-    console.table(res)
-    start();
-  })
+function viewAllEmployees() {
+  connection.query(
+    "SELECT first_name, last_name FROM employee LEFT JOIN department_name FROM department",
+    (err, res) => {
+      if (err) throw err;
+      console.table(res);
+      start();
+    }
+  );
 }
 
 // Add department
 
 function addDepartment() {
   inquirer
-  .prompt([
+    .prompt([
       {
-          type: "input",
-          name: "department",
-          message: "Insert a new department",
-      }
+        type: "input",
+        name: "department",
+        message: "Insert a new department",
+      },
     ])
-  .then(function(answer) {
-      connection.query("INSERT INTO department VALUE (DEFAULT, ?)",
-    [answer.department],
-      function(err){
-          if (err)
-          throw err;
-      console.log (`Department added.`);
-      start();
-      })
-  })
+    .then(function (answer) {
+      connection.query(
+        "INSERT INTO department VALUE (DEFAULT, ?)",
+        [answer.department],
+        function (err) {
+          if (err) throw err;
+          console.log(`Department added.`);
+          start();
+        }
+      );
+    });
 }
 
 // Add role
 
 function addRole() {
-
   inquirer
-  .prompt([
-    {
-    type: "input",
-    name: "role",
-    message: "Role title",
-    },
-    {
-    type: "number",
-    name: "salary",
-    message: "Enter salary",
-    },
-    {
-    type: "list",
-    name: "department_id",
-    message: "Enter the Department id ",
-    }
-  ])
-  .then(function(answer) {
-    connection.query("INSERT INTO role SET ?",
-  [answer.role],
-    function(err){
-        if (err)
-        throw err;
-    console.log (`Role added.`);
-    start();
-    })
-})
+    .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "Role title",
+      },
+      {
+        type: "number",
+        name: "salary",
+        message: "Enter salary",
+      },
+      {
+        type: "number",
+        name: "department_id",
+        message: "Enter the Department id ",
+      },
+    ])
+    .then(function (answer) {
+      connection.query(
+        "INSERT INTO role SET ?",
+        {
+          title: answer.role,
+          salary: answer.salary,
+          department_id: answer.department_id,
+        },
+
+        function (err) {
+          if (err) throw err;
+          console.log(`Role added.`);
+          start();
+        }
+      );
+    });
 }
 
 
+// Add employee
+function addEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "first_name",
+        message: "Enter first name",
+      },
+      {
+        type: "input",
+        name: "last_name",
+        message: "Enter last name",
+      },
+      {
+        type: "input",
+        name: "role_id",
+        message: "Enter role",
+      },
+      {
+        type: "number",
+        name: "manager_id",
+        message: "Enter manager",
+      },
+    ])
+    .then(function (answer) {
+      connection.query(
+        "INSERT INTO employee SET ?",
+        {
+          first_name: answer.first_name,
+          last_name: answer.last_name,
+          role_id: answer.role_id,
+          manager_id: answer.role_id,
+        },
 
-
-
-
-
-//   connection.query("SELECT * FROM department", (err, res) => {
-//       if (err)
-//       throw err;
-
-//       ]) .then(data => {
-//           // returns name of the department depID.id (comes from integer created from table creation)
-//           const depID = res.find(department => department.dep_name === data.depID)
-//           db.query("INSERT INTO role_table SET ?", {
-//               title: data.role, salary: data.salary, department_id: depID.id
-//           }, 
-//           err => {
-//               if (err) 
-//               throw err;
-                  
-//           console.log(`Role successfully added. Select "view all roles" to see addition`)
-//           promptUser(); 
-//       }
-//           ) 
-//       })
-//   })
-// }
+        function (err) {
+          if (err) throw err;
+          console.log(`Employee added.`);
+          start();
+        }
+      );
+    });
+}
