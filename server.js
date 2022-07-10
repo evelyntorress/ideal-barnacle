@@ -14,7 +14,9 @@ const connection = mysql.createConnection({
   user:"root",
   password:"Password11!",
   database:"employee_db"
-});
+}
+ console.log(`Connected to MySQL`)
+);
 
 // Connect to mySql server and database
 connection.connect((err) => {
