@@ -15,9 +15,15 @@ Clone the repo from GitHub, and install node.js on your computer, in the command
 
 The following images show the web application's appearance and functionality:
 
+- Adding a department
+
 ![Adding a department](./images/Adding%20a%20department.jpeg)
 
+- Adding a role
+
 ![Adding a role](./images/Adding%20role.jpeg)
+
+- Adding a new employee
 
 ![Adding a new employee](./images/Adding%20new%20employee.jpeg)
 
