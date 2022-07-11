@@ -21,7 +21,7 @@ INSERT INTO employee
 VALUES ("Josh", "Richardson", "Store manager", NULL),
  ("Suddash","Singh", "Assistant manager", 1), 
  ("Bashi", "Basra", "Lead", 1), 
- ("Abdalla","Jama","Accountant", 1),
+ ("Ana","Jara","Accountant", 1),
  ("Mannahz","Monfared","Lead", 1),
  ("Devang","Khanpara","Grocery clerk", 1),
  ("Colette","Petrovic","Meat clerk", 4),

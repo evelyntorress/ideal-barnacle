@@ -91,7 +91,7 @@ function viewRole() {
 
 function viewAllEmployees() {
   connection.query(
-    "SELECT first_name, last_name FROM employee LEFT JOIN department_name FROM department",
+    "SELECT first_name, last_name FROM employee",
     (err, res) => {
       if (err) throw err;
       console.table(res);
@@ -125,7 +125,6 @@ function addDepartment() {
 }
 
 // Add role
-
 function addRole() {
   inquirer
     .prompt([
@@ -149,7 +148,7 @@ function addRole() {
       connection.query(
         "INSERT INTO role SET ?",
         {
-          title: answer.role,
+          title: answer.title,
           salary: answer.salary,
           department_id: answer.department_id,
         },
@@ -160,12 +159,60 @@ function addRole() {
           start();
         }
       );
-    });
+    });  
 }
 
 
 // Add employee
 function addEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "first_name",
+        message: "Enter first name",
+      },
+      {
+        type: "input",
+        name: "last_name",
+        message: "Enter last name",
+      },
+      {
+        type: "input",
+        name: "role_id",
+        message: "Enter role",
+      },
+      {
+        type: "number",
+        name: "manager_id",
+        message: "Enter manager",
+      },
+    ])
+    .then(function (answer) {
+      connection.query(
+        "INSERT INTO employee SET ?",
+        {
+          first_name: answer.first_name,
+          last_name: answer.last_name,
+          role_id: answer.role_id,
+          manager_id: answer.manager_id,
+        },
+
+        function (err) {
+          if (err) throw err;
+          console.log(`Employee added.`);
+          start();
+        }
+      );
+    });
+}
+
+// WHEN I choose to update an employee role
+// THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
+
+// Update an employee role
+
+function updateRole() {
   inquirer
     .prompt([
       {
