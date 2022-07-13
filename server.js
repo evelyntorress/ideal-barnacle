@@ -162,7 +162,6 @@ function addRole() {
     });  
 }
 
-
 // Add employee
 function addEmployee() {
   inquirer
@@ -235,6 +234,11 @@ function updateRole() {
         name: "manager_id",
         message: "Enter manager",
       },
+      {
+        type: "input",
+        name: "mew_role",
+        message: "New role",
+      },
     ])
     .then(function (answer) {
       connection.query(
@@ -243,7 +247,8 @@ function updateRole() {
           first_name: answer.first_name,
           last_name: answer.last_name,
           role_id: answer.role_id,
-          manager_id: answer.role_id,
+          manager_id: answer.manager_id,
+          new_role: answer.new_role,
         },
 
         function (err) {
