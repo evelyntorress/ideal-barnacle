@@ -212,41 +212,28 @@ function addEmployee() {
 function updateRole() {
   inquirer
     .prompt([
+    
       {
-        type: "input",
-        name: "first_name",
-        message: "Enter first name",
-      },
-      {
-        type: "input",
-        name: "last_name",
-        message: "Enter last name",
-      },
-      {
-        type: "input",
-        name: "role_id",
-        message: "Enter role",
+        type: "number",
+        name: "roleId",
+        message: "Enter role id",
       },
       {
         type: "number",
-        name: "manager_id",
-        message: "Enter manager",
+        name: "employeeId",
+        message: "Enter employee id",
       },
-      {
-        type: "input",
-        name: "new_role",
-        message: "New role",
-      },
+      
     ])
     .then(function (answer) {
       connection.query(
-        "INSERT INTO employee SET ?",
+        "UPDATE employee SET role_id = ? WHERE id = ?",
+     [roleId, employeeId],
+    
         {
-          first_name: answer.first_name,
-          last_name: answer.last_name,
-          role_id: answer.role_id,
-          manager_id: answer.manager_id,
-          new_role: answer.new_role,
+          roleId: answer.roleId,
+          employeeId: answer.employeeId,
+          
         },
 
         function (err) {
