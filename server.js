@@ -10,8 +10,8 @@ const table = require("console.table");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Connection to MySQL
-const connection = mysql.createConnection(
+// Connection to database
+const db = mysql.createConnection(
   {
     host: "localhost",
     port: 3306,
@@ -23,7 +23,7 @@ const connection = mysql.createConnection(
 );
 
 // Connect to mySql server and database
-connection.connect(function (err) {
+db.connect(function (err) {
   if (err) throw err;
   start();
 });
@@ -63,7 +63,7 @@ function start() {
       } else if (answer.selection === "Update a role") {
         updateRole();
       } else {
-        connection.end();
+        db.end();
       }
     });
 }
@@ -71,7 +71,7 @@ function start() {
 // View departments
 
 function viewDepts() {
-  connection.query("SELECT * FROM department", (err, res) => {
+  db.query("SELECT * FROM department", (err, res) => {
     if (err) throw err;
     console.table(res);
     start();
@@ -80,7 +80,7 @@ function viewDepts() {
 // View roles
 
 function viewRole() {
-  connection.query("SELECT * FROM role", (err, res) => {
+  db.query("SELECT * FROM role", (err, res) => {
     if (err) throw err;
     console.table(res);
     start();
@@ -90,8 +90,8 @@ function viewRole() {
 // View all employees
 
 function viewAllEmployees() {
-  connection.query(
-    "SELECT first_name, last_name FROM employee",
+  db.query(
+    "SELECT * FROM employee",
     (err, res) => {
       if (err) throw err;
       console.table(res);
@@ -112,7 +112,7 @@ function addDepartment() {
       },
     ])
     .then(function (answer) {
-      connection.query(
+      db.query(
         "INSERT INTO department VALUE (DEFAULT, ?)",
         [answer.department],
         function (err) {
@@ -145,7 +145,7 @@ function addRole() {
       },
     ])
     .then(function (answer) {
-      connection.query(
+      db.query(
         "INSERT INTO role SET ?",
         {
           title: answer.title,
@@ -188,7 +188,7 @@ function addEmployee() {
       },
     ])
     .then(function (answer) {
-      connection.query(
+      db.query(
         "INSERT INTO employee SET ?",
         {
           first_name: answer.first_name,
@@ -210,6 +210,28 @@ function addEmployee() {
 // Update an employee role
 
 function updateRole() {
+
+  // query the db "SELECT * FROM employees"
+  db.query("SELECT * FROM employees", (err, res) => {
+    
+      // create a var that takes in the results of the above query and maps over them
+        return db.Map<employeeSelection>(db.query);)
+          
+        // example employeeSelection
+          const employeeSelection = resultsEmployeeSelection
+  
+  // query the db "SELECT * FROM role"
+  db.query("SELECT * FROM role", (err, res) => {
+        
+    // create a var that takes in the results of the above query and maps over them
+        return db.Map<roleSelection>(db.query);)
+         
+        // example roleSelection
+          const roleSelection = resultsRoleSelection
+      
+
+         
+
   inquirer
     .prompt([
     
@@ -226,7 +248,7 @@ function updateRole() {
       
     ])
     .then(function (answer) {
-      connection.query(
+      db.query(
         "UPDATE employee SET role_id = ? WHERE id = ?",
      [roleId, employeeId],
     
