@@ -15,19 +15,14 @@ Clone the repo from GitHub, and install node.js on your computer, in the command
 
 The following images show the web application's appearance and functionality:
 
-- Adding a department
 
-![Adding a department](./images/Adding%20a%20department.jpeg)
+![Adding a department](./images/1.jpeg)
 
-- Adding a role
+![Adding a role](./images/2.jpeg)
 
-![Adding a role](./images/Adding%20role.jpeg)
-
-- Adding a new employee
-
-![Adding a new employee](./images/Adding%20new%20employee.jpeg)
+![Adding a new employee](./images/3.jpeg)
 
 
 ### Walkthrough Video:
 
-Clicking [this link](https://loom.com/share/2222333be6de4a3398be4cd2cd3751a5) you will find the video with the demonstration of the app.
+Clicking [this link](https://drive.google.com/file/d/16_R4Ii1icnAS7S89n7bc7KvLNPI1JRhE/view) you will find the video with the demonstration of the app.

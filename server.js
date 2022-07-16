@@ -208,67 +208,7 @@ function addEmployee() {
 
 
 // Update an employee role
-
-// function updateRole() {
-
-//   // query the db "SELECT * FROM employees"
-//   db.query("SELECT * FROM employees", (err, res) => {
-    
-//       // create a var that takes in the results of the above query and maps over them
-//         return db.Map<employeeSelection>(db.query);)
-          
-//         // example employeeSelection
-//           const employeeSelection = resultsEmployeeSelection
-  
-//   // query the db "SELECT * FROM role"
-//   db.query("SELECT * FROM role", (err, res) => {
-        
-//     // create a var that takes in the results of the above query and maps over them
-//         return db.Map<roleSelection>(db.query);)
          
-//         // example roleSelection
-//           const roleSelection = resultsRoleSelection
-      
-
-         
-
-//   inquirer
-//     .prompt([
-    
-//       {
-//         type: "number",
-//         name: "roleId",
-//         message: "Enter role id",
-//       },
-//       {
-//         type: "number",
-//         name: "employeeId",
-//         message: "Enter employee id",
-//       },
-      
-//     ])
-//     .then(function (answer) {
-//       db.query(
-//         "UPDATE employee SET role_id = ? WHERE id = ?",
-//      [roleId, employeeId],
-    
-//         {
-//           roleId: answer.roleId,
-//           employeeId: answer.employeeId,
-          
-//         },
-
-//         function (err) {
-//           if (err) throw err;
-//           console.log(`Employee added.`);
-//           start();
-//         }
-//       );
-//     });
-// }
-
-
-
 function updateRole() {
   db.promise().query("SELECT * FROM employee").then(([rows]) => {
       console.table(rows)
