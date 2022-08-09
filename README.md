@@ -1,7 +1,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# 12 SQL: Employee Tracker
+# SQL: Employee Tracker
 
 ## Description
 
